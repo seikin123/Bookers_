@@ -1,0 +1,22 @@
+<table class="table table-user">
+    <h2>User info</h2>
+		<tr><%= attachment_image_tag user, :profile_image, size: "100x100", fallback: "no_image.jpg"%></tr>
+		<tr>
+		  <th>name</th>
+		  <th><%= user.name %></th>
+		</tr>
+		
+	<div class="form-body row">
+    <tr><th>introduction</th>
+		<th><%= user.introduction %></th></tr>
+	</div>
+</table>
+
+<%# 編集ボタンについて %>
+<%# <% if user.id == current_user.id %> 
+	<div class="row">
+  	<td><%= link_to " ", edit_user_path(user), class:"btn btn-outline-secondary btn-block fas fa-user-cog" %></td>
+<%# <% else %>
+<%# <td><%= link_to " ", user_path(current_user), class:"btn btn-outline-secondary btn-block fas fa-user-cog" %>
+<%# <% end %>
+	</div>
