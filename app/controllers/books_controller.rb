@@ -22,6 +22,7 @@ end
     @books = Book.all
     @booknew = Book.new
     @user = current_user
+    
   end
 
   def show
