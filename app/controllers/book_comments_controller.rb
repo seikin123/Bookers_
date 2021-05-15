@@ -1,11 +1,16 @@
 class BookCommentsController < ApplicationController
 
   def create
-    @book = Book.find(params[:book_id])
+    book = Book.find(params[:book_id])
     @book_comment = @book.book_comments.build(book_comment_params)
     @book_comment.user_id = current_user.id
-    @book_comment.save
-    render :index
+    if @book_comment.save
+      flash[:success] = "コメントしました"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:success] = "コメントできませんでした"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy
