@@ -1,6 +1,20 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  def following
+    #@userがフォローしているユーザー
+    @user  = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+      #@userをフォローしているユーザー
+      @user  = User.find(params[:id])
+      @users = @user.followers
+      render 'show_follower'
+  end
+
   def index
     @user = current_user
     @users = User.all
@@ -10,9 +24,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @books = @user.books
+    @books = Book.where(user_id: @user.id)
     @booknew = Book.new
-  
   end
 
   def edit
@@ -32,6 +45,8 @@ end
       render :edit
   end
 end
+
+
 
 private
   def user_params
