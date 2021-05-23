@@ -2,10 +2,10 @@
 
 one:
   user: one
-  post: one
+  book: one
   comment: MyString
 
 two:
   user: two
-  post: two
+  book: two
   comment: MyString

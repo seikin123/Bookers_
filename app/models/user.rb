@@ -7,7 +7,7 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
   attachment :profile_image
   # コメント機能の記述
-  has_many :book_comments, dependent: :destroy
+  has_many :commenters, dependent: :destroy
   # いいね機能の記述
   has_many :favorites, dependent: :destroy
 

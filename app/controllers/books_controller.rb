@@ -30,6 +30,8 @@ end
     @booknew = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
+    @comment = Commenter.new
+    @comments = @book.commenters
     
   end
 
