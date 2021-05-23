@@ -15,6 +15,11 @@ class UsersController < ApplicationController
       render 'show_follower'
   end
 
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @users = User.search(params[:search])
+  end
+
   def index
     @user = current_user
     @users = User.all
