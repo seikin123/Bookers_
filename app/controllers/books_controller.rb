@@ -2,8 +2,9 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :editing_user, only: [:edit]
 
-  def new
-    @book = Book.new
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @books = Book.search(params[:search])
   end
 
   def create
@@ -29,7 +30,7 @@ end
     @booknew = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
-    @user = User.find(@book.user_id)
+    @book_comment = BookComment.new
   end
 
   def edit
