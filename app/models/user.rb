@@ -14,6 +14,11 @@ class User < ApplicationRecord
   def already_favorited?(book)
     self.favorites.exists?(book_id: book.id)
   end
+
+  # チャット機能の記述
+  has_many :user_rooms
+  has_many :chats
+  
   # フォロー機能の記述
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow

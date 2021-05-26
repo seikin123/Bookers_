@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   # コメント機能の記述
-  has_many :comments, dependent: :destroy
+  has_many :commenters, dependent: :destroy
 
   # 検索機能の記述
   def self.search(search)

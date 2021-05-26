@@ -24,7 +24,9 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li><a class="fas fa-home nav-link text-light" href="<%= user_path(current_user.id) %>"> home</a></li>
+          <li><a class="fas fa-users nav-link text-light" href="<%= search_users_path %>"> search</a></li>
           <li><a class="fas fa-users nav-link text-light" href="/users"> Users</a></li>
+          <li><a class="fas fa-book-open nav-link text-light" href="<%= search_books_path %>"> search</a></li>
           <li><a class="fas fa-book-open nav-link text-light" href="/books"> Books</a></li>
           <li><%= link_to "logout", destroy_user_session_path, class:"fas fa-sign-out-alt nav-link text-light",method: :delete %></li>
         <% else %>

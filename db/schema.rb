@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_23_063456) do
+ActiveRecord::Schema.define(version: 2021_05_23_080431) do
 
   create_table "book_comments", force: :cascade do |t|
     t.text "comment"
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 2021_05_23_063456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "commenters", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_commenters_on_book_id"
+    t.index ["user_id"], name: "index_commenters_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -53,6 +71,18 @@ ActiveRecord::Schema.define(version: 2021_05_23_063456) do
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
     t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

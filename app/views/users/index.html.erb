@@ -28,10 +28,10 @@
           <td><%= attachment_image_tag user, :profile_image, size: "40x40",fallback: "no_image.jpg" %></td>
           <td><%= user.name %></td>
           <td><%= link_to "Show", "/users/#{user.id}" %></td>
-        </tr>
         <% end %>
+        </tr>
         </tbody>
-      </table>
+        </table>
     </div>
   </div>
 </main>

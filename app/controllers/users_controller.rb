@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = Book.where(user_id: @user.id)
     @booknew = Book.new
+    
   end
 
   def edit

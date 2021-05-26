@@ -1,3 +1,4 @@
+<p id="notice"></p>
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
@@ -26,9 +27,32 @@
         <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %></td>
         <td><%= link_to "Destroy", book_path, method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=> "Are you sure?" %></td>
             <% end %>
-        </tr>
+          </tr>
+
         </tbody>
       </table>
+            <%= form_for [@book, @comment] do |f| %>
+            <%= f.text_area :comment, size: "40x5" %>
+            <%= f.submit '送信' %>
+            <% end %>
+            <table>
+          <thead>
+            <tr>
+              <th>コメント投稿者</th>
+              <th>コメント内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @comments.each do |comment| %>
+              <tr>
+                <td><%= attachment_image_tag comment.user, :profile_image, size: "40x40", fallback: "no_image.jpg"%>
+                <%= comment.user.name %></td>
+                <td><%= comment.comment %></td>
+                <td><%= link_to "削除", book_commenter_path(@book, comment), method: :delete %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>

@@ -1,0 +1,3 @@
+$("#follow_button").html("<%= j(render("users/users/unfollow")) %>");
+
+$('#favorites_buttons_<%= @book.id %>').html("<%= j(render partial: 'favorites/favorite', locals: {book: @book}) %>");
