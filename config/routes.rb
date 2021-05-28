@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   end
 
   # chat機能
-  get 'chat/:id' => 'chats#show', as: 'chat'
-  resources :chats, only: [:create]
+  get 'rooms/show'
 
   # フォロー機能
 resources :relationships, only: [:create, :destroy]
