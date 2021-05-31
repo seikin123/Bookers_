@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   devise_for :users
   # user関連
@@ -6,15 +7,14 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-
-  # chat機能
-  get 'rooms/show'
-
   # フォロー機能
-resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   root to: "homes#top"
   get "/home/about" => "homes#about"
   
+  # chat機能
+  get 'rooms/show'
+
   # books関連
   resources :books do
     collection do

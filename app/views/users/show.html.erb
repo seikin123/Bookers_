@@ -6,9 +6,9 @@
         <tr><%= render 'users/profile', user: @user %></tr>
       </table>
 
-      <% if current_user != @user %>
-        <%= link_to 'chatを始める', chat_path(@user.id)%>
-      <% end %>
+      <%# <% if current_user != @user %>
+        <%# <%= link_to 'chatを始める', chat_path(@user.id)%> 
+      <%# <% end %> 
       
       <div>
         <tr><%= render 'books/form', {book: @booknew, btn: 'Create Book'} %></tr>
