@@ -4,11 +4,10 @@ class CommentersController < ApplicationController
     @comment = @book.commenters.new(commenter_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to request.referer
+      redirect_to request.referer, notice: 'successfully created!'
     else
-      @book_new = Book.new
-      @comments = @book.comments
-      redirect_to new_book_path
+      # @comments = @book.comments
+      redirect_to book_path(@book)
     end
   end
 

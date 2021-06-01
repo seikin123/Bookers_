@@ -45,5 +45,10 @@ class User < ApplicationRecord
     return User.all unless search
     User.where(['name LIKE ?', "%#{search}%"])
   end
+  # メール送信機能
+  after_create :send_welcome_mail
 
+  def send_welcome_mail
+    UserNoticeMailer.send_signup_email(self).deliver
+  end
 end
